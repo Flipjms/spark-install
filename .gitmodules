@@ -1,0 +1,6 @@
+[submodule "docker"]
+	path = docker
+	url = git@github.com:Flipjms/docker-spark.git
+[submodule "laravel-spark"]
+	path = laravel-spark
+	url = git@bitbucket.org:flipjms/laravel-spark.git
