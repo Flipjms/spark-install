@@ -2,7 +2,7 @@
 
 git submodule add git@github.com:Flipjms/docker-spark.git docker
 
-echo "Enter your spark repository url:"
+echo "\n\r\n\rEnter your spark repository url:"
 
 read SPARK_REPO
 git submodule add $SPARK_REPO laravel-spark
@@ -29,7 +29,7 @@ WORKSPACE_ID=$(cat "${TMP_DIR}containers.txt" | grep `docker ps -f ancestor=dock
 
 #Fetch the mariadb IP to edit on env file
 DB_ID=$(cat "${TMP_DIR}containers.txt" | grep `docker ps -f ancestor=docker_mariadb -q`)
-echo $DB_ID
+
 DB_IP=$(docker inspect --format "{{ .NetworkSettings.Networks.docker_default.IPAddress }}" $DB_ID)
 docker exec -it ${WORKSPACE_ID} composer install
 docker exec -it ${WORKSPACE_ID} npm install
@@ -44,4 +44,8 @@ sed -i -c "s/\(DB_HOST *= *\).*/\1$DB_IP/" .env
 
 cd ../docker
 docker exec -it ${WORKSPACE_ID} php artisan migrate
+
 open "http://localhost:8080"
+
+echo "To enter into the workspace bash to run artisan/gulp commands:\n\r\n\r"
+echo "docker exec -it ${WORKSPACE_ID} bash"
