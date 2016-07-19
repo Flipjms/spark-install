@@ -2,7 +2,7 @@
 
 git submodule add git@github.com:Flipjms/docker-spark.git docker
 
-echo "\n\r\n\rEnter your spark repository url:"
+printf "\n\r\n\rEnter your spark repository url:"
 
 read SPARK_REPO
 git submodule add $SPARK_REPO laravel-spark
@@ -47,5 +47,5 @@ docker exec -it ${WORKSPACE_ID} php artisan migrate
 
 open "http://localhost:8080"
 
-echo "To enter into the workspace bash to run artisan/gulp commands:\n\r\n\r"
-echo "docker exec -it ${WORKSPACE_ID} bash"
+printf "To enter into the workspace bash to run artisan/gulp commands:\n\r\n\r"
+printf "docker exec -it ${WORKSPACE_ID} bash"
